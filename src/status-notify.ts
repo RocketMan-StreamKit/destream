@@ -1,0 +1,45 @@
+import { PLATFORM } from './constants';
+
+const NOTIFY_ID = `${PLATFORM}_status`;
+
+type ConnectionNotifyState = 'online' | 'offline' | 'error';
+
+const PLATFORM_NAME = {
+  en: 'Destream',
+  ru: 'Destream',
+  uk: 'Destream',
+};
+
+export const notifyConnectionStatus = (state: ConnectionNotifyState) => {
+  if (state === 'online') {
+    notify.Remove(NOTIFY_ID);
+    return;
+  }
+
+  if (state === 'offline') {
+    notify.Send({
+      id: NOTIFY_ID,
+      type: 'info',
+      title: PLATFORM_NAME,
+      message: {
+        en: 'Disconnected',
+        ru: 'Отключено',
+        uk: 'Відключено',
+      },
+      temp: true,
+    });
+    return;
+  }
+
+  notify.Send({
+    id: NOTIFY_ID,
+    type: 'error',
+    title: PLATFORM_NAME,
+    message: {
+      en: 'Connection error',
+      ru: 'Ошибка подключения',
+      uk: 'Помилка підключення',
+    },
+    temp: true,
+  });
+};

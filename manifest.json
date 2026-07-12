@@ -1,0 +1,26 @@
+{
+  "id": "destream",
+  "name": {
+    "en": "Destream",
+    "ru": "Destream",
+    "uk": "Destream"
+  },
+  "description": {
+    "en": "Destream donation integration: overlay URL authentication and real-time donation alerts via WebSocket.",
+    "ru": "Интеграция Destream: авторизация по ссылке на виджет и уведомления о донатах через WebSocket.",
+    "uk": "Інтеграція Destream: авторизація за посиланням на віджет і сповіщення про донати через WebSocket."
+  },
+  "type": "platform.donation",
+  "version": "1.0.0",
+  "author": "RocketMan System",
+  "icon": "logo.svg",
+  "permissions": [
+    "NETWORK_REQUEST",
+    "NETWORK_WEBSOCKET",
+    "WEB_END_POINTS",
+    "DASHBOARD_EVENTS",
+    "STATUS",
+    "NOTIFY"
+  ],
+  "app_version": "1.0.33"
+}
