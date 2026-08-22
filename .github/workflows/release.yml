@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - beta
 
 permissions:
   contents: write
@@ -61,8 +62,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          EXTRA_FLAGS=()
+          if [ "$GITHUB_REF_NAME" = "beta" ]; then
+            EXTRA_FLAGS+=(--prerelease --latest=false)
+          fi
           gh release create "${{ steps.manifest.outputs.tag }}" \
             --title "${{ steps.manifest.outputs.tag }}" \
+            "${EXTRA_FLAGS[@]}" \
             main.zip \
             dist/manifest.json \
             "dist/logo.svg"
